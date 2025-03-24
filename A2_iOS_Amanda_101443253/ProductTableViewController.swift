@@ -11,7 +11,7 @@ import CoreData
 class ProductTableViewController: UITableViewController {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     // Grab products.
     var products: [Product]?
 

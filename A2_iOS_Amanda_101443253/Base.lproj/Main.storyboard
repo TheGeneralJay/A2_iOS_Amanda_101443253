@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="A2_iOS_Amanda_101443253" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Kl-VSS">
-                                <rect key="frame" x="24" y="326" width="345" height="190"/>
+                                <rect key="frame" x="24" y="331" width="345" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-7g-820">
                                         <rect key="frame" x="0.0" y="5" width="114.33333333333333" height="180.33333333333334"/>
@@ -120,7 +120,7 @@
             <objects>
                 <tableViewController id="Eyg-t9-IBv" customClass="ProductTableViewController" customModule="A2_iOS_Amanda_101443253" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qC8-7L-0yL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -155,16 +155,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hcu-qq-vVY">
-                        <barButtonItem key="rightBarButtonItem" title="Add Product" image="plus" catalog="system" id="41I-PA-9hb">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="k1h-iR-yMi"/>
-                            </connections>
-                        </barButtonItem>
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" id="h4A-5H-m90">
+                            <rect key="frame" x="62.333333333333343" y="5" width="219.00000000000003" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add Product" image="plus" catalog="system" id="41I-PA-9hb">
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="k1h-iR-yMi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" id="hRe-1R-EVi"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncQ-aV-TIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="-2"/>
+            <point key="canvasLocation" x="1032.824427480916" y="-2.1126760563380285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CE9-Oc-Fll">
@@ -186,11 +196,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k1h-iR-yMi"/>
-        <segue reference="hFY-pS-uj0"/>
+        <segue reference="oWO-5N-gMp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
