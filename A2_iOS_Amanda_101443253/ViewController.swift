@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
+    // Array of each text field.
+    @IBOutlet var textFields: [UITextField]!
+    
+    var products: [Product]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 

@@ -51,22 +51,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="7ey-Wf-IZ7">
                                         <rect key="frame" x="144.33333333333337" y="0.0" width="200.66666666666663" height="190"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZRX-aq-kQY">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZRX-aq-kQY" userLabel="productName">
                                                 <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjz-9i-PfS">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjz-9i-PfS" userLabel="description">
                                                 <rect key="frame" x="0.0" y="52" width="200.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FFn-W6-yQ9">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FFn-W6-yQ9" userLabel="price">
                                                 <rect key="frame" x="0.0" y="104" width="200.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-2W-j4c">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-2W-j4c" userLabel="provider">
                                                 <rect key="frame" x="0.0" y="156" width="200.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -96,6 +96,12 @@
                         <barButtonItem key="leftBarButtonItem" title="ProductList" image="list.bullet.rectangle.portrait.fill" catalog="system" id="1pP-6p-jhF"/>
                         <barButtonItem key="rightBarButtonItem" title="AddProduct" image="plus" catalog="system" id="XuR-ED-zRH"/>
                     </navigationItem>
+                    <connections>
+                        <outletCollection property="textFields" destination="ZRX-aq-kQY" collectionClass="NSMutableArray" id="cKo-Dk-mWS"/>
+                        <outletCollection property="textFields" destination="vjz-9i-PfS" collectionClass="NSMutableArray" id="Rmo-Qz-LZK"/>
+                        <outletCollection property="textFields" destination="FFn-W6-yQ9" collectionClass="NSMutableArray" id="idk-gs-3d9"/>
+                        <outletCollection property="textFields" destination="Mvd-2W-j4c" collectionClass="NSMutableArray" id="zJJ-0l-LsF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
