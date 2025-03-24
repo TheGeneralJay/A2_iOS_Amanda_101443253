@@ -52,6 +52,7 @@ class ViewController: UIViewController {
     @objc func saveToDB(context: NSManagedObjectContext) {
         do {
             try context.save()
+            print("INFO: Product successfully saved to the DB.")
         } catch {
             print("ERROR: There was an error while trying to save the product to the DB.")
             print("\(error.localizedDescription)")
@@ -66,12 +67,12 @@ class ViewController: UIViewController {
         
         do {
             products = try context.fetch(request)
+            
+            print("INFO: Products successfully fetched.")
         } catch {
             print("ERROR: There was an error while trying to fetch the products in the DB.")
             print("\(error.localizedDescription)")
         }
-        
-        print(products!)
     }
     
 }
