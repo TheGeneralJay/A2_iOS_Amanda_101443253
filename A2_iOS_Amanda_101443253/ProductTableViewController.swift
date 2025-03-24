@@ -37,7 +37,11 @@ class ProductTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-         // Configure the cell...
+        if let products = products {
+            let product = products[indexPath.row]
+            cell.textLabel?.text = product.name
+            cell.detailTextLabel?.text = "$\(product.price)"
+        }
 
         return cell
     }

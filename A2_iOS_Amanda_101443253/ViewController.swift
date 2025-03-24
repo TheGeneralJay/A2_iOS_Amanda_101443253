@@ -48,6 +48,14 @@ class ViewController: UIViewController {
         saveToDB(context: context)
     }
     
+    // Passing data to table view.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let productTable = segue.destination as? ProductTableViewController
+        
+        productTable?.products = products
+    }
+    
+    
     // Function to save info to DB.
     @objc func saveToDB(context: NSManagedObjectContext) {
         do {
