@@ -19,12 +19,6 @@ class ProductTableViewController: UITableViewController {
         super.viewDidLoad()
         
         fetchData(context: context)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -44,8 +38,9 @@ class ProductTableViewController: UITableViewController {
 
         if let products = products {
             let product = products[indexPath.row]
-            cell.textLabel?.text = product.name
-            cell.detailTextLabel?.text = "$\(product.price)"
+            
+            cell.textLabel?.text = "\(product.name ?? "N/A")"
+            cell.detailTextLabel?.text = "Provider: \(product.provider ?? "N/A") \nDescription: \(product.productDescription ?? "N/A") \nPrice: \(product.price.formatted(.currency(code: "CAD")))"
         }
 
         return cell
