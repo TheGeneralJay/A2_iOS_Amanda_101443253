@@ -94,7 +94,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vjv-mj-Mb0">
                         <barButtonItem key="leftBarButtonItem" title="ProductList" image="list.bullet.rectangle.portrait.fill" catalog="system" id="1pP-6p-jhF"/>
-                        <barButtonItem key="rightBarButtonItem" title="AddProduct" image="plus" catalog="system" id="XuR-ED-zRH"/>
+                        <barButtonItem key="rightBarButtonItem" title="AddProduct" image="plus" catalog="system" id="XuR-ED-zRH">
+                            <connections>
+                                <action selector="addProduct:" destination="BYZ-38-t0r" id="5Xa-7a-de9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outletCollection property="textFields" destination="ZRX-aq-kQY" collectionClass="NSMutableArray" id="cKo-Dk-mWS"/>
