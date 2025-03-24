@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="A2_iOS_Amanda_101443253" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Kl-VSS">
-                                <rect key="frame" x="24" y="331" width="345" height="190"/>
+                                <rect key="frame" x="24" y="326" width="345" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-7g-820">
                                         <rect key="frame" x="0.0" y="5" width="114.33333333333333" height="180.33333333333334"/>
@@ -93,9 +93,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vjv-mj-Mb0">
-                        <barButtonItem key="leftBarButtonItem" title="ProductList" image="list.bullet.rectangle.portrait.fill" catalog="system" id="1pP-6p-jhF">
+                        <barButtonItem key="leftBarButtonItem" title="ProductList" image="list.bullet.rectangle.portrait.fill" catalog="system" id="861-Bf-x0j">
                             <connections>
-                                <segue destination="Eyg-t9-IBv" kind="show" id="Qpf-TU-0Xt"/>
+                                <segue destination="Eyg-t9-IBv" kind="show" id="hFY-pS-uj0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="AddProduct" image="plus" catalog="system" id="XuR-ED-zRH">
@@ -113,14 +113,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.885496183206" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1978" y="-2"/>
         </scene>
         <!--Product Table View Controller-->
         <scene sceneID="sS1-XO-0gN">
             <objects>
                 <tableViewController id="Eyg-t9-IBv" customClass="ProductTableViewController" customModule="A2_iOS_Amanda_101443253" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qC8-7L-0yL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -154,11 +154,17 @@
                             <outlet property="delegate" destination="Eyg-t9-IBv" id="PlL-m2-2ZQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hcu-qq-vVY"/>
+                    <navigationItem key="navigationItem" id="hcu-qq-vVY">
+                        <barButtonItem key="rightBarButtonItem" title="Add Product" image="plus" catalog="system" id="41I-PA-9hb">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="k1h-iR-yMi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncQ-aV-TIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="-2"/>
+            <point key="canvasLocation" x="1034" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CE9-Oc-Fll">
@@ -171,7 +177,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2gE-9Q-kbe"/>
+                        <segue destination="Eyg-t9-IBv" kind="relationship" relationship="rootViewController" id="oWO-5N-gMp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4z-dt-AS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -179,6 +185,9 @@
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hFY-pS-uj0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>

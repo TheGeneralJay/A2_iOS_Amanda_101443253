@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         product.id = UUID()
         product.name = name
         product.productDescription = productDesc
-        product.price = Float(price) ?? 0
+        product.price = Double(price) ?? 0
         product.provider = provider
         
         // Append the new product to the products array.
@@ -61,6 +61,8 @@ class ViewController: UIViewController {
         do {
             try context.save()
             print("INFO: Product successfully saved to the DB.")
+            
+            fetchData(context: context)
         } catch {
             print("ERROR: There was an error while trying to save the product to the DB.")
             print("\(error.localizedDescription)")

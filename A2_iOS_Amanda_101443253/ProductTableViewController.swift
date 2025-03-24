@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import CoreData
 
 class ProductTableViewController: UITableViewController {
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     // Grab products.
     var products: [Product]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchData(context: context)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,7 +40,7 @@ class ProductTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath)
 
         if let products = products {
             let product = products[indexPath.row]
@@ -46,6 +51,21 @@ class ProductTableViewController: UITableViewController {
         return cell
     }
 
+    func fetchData(context: NSManagedObjectContext) {
+        // Fetch list of all products when application loads.
+        products = [Product]()
+        
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do {
+            products = try context.fetch(request)
+            
+            print("INFO: Products successfully fetched.")
+        } catch {
+            print("ERROR: There was an error while trying to fetch the products in the DB.")
+            print("\(error.localizedDescription)")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
