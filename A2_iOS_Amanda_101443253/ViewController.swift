@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
+    // Make context available here.
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     // Array of each text field.
     @IBOutlet var textFields: [UITextField]!
@@ -18,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        fetchData(context: context)
     }
 
     @IBAction func addProduct(_ sender: UIBarButtonItem) {
@@ -43,19 +45,33 @@ class ViewController: UIViewController {
         products?.append(product)
         
         // Save this to the DB.
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        saveToDB(context: context)
     }
     
     // Function to save info to DB.
-    @objc func saveToDB() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
+    @objc func saveToDB(context: NSManagedObjectContext) {
         do {
             try context.save()
         } catch {
             print("ERROR: There was an error while trying to save the product to the DB.")
             print("\(error.localizedDescription)")
         }
+    }
+    
+    func fetchData(context: NSManagedObjectContext) {
+        // Fetch list of all products when application loads.
+        products = [Product]()
+        
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do {
+            products = try context.fetch(request)
+        } catch {
+            print("ERROR: There was an error while trying to fetch the products in the DB.")
+            print("\(error.localizedDescription)")
+        }
+        
+        print(products!)
     }
     
 }
