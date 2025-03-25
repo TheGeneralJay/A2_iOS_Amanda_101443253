@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" id="Vjv-mj-Mb0">
                         <barButtonItem key="leftBarButtonItem" title="ProductList" image="list.bullet.rectangle.portrait.fill" catalog="system" id="861-Bf-x0j">
                             <connections>
-                                <segue destination="Eyg-t9-IBv" kind="show" id="hFY-pS-uj0"/>
+                                <segue destination="Eyg-t9-IBv" kind="show" id="Nr6-Yc-pbj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="AddProduct" image="plus" catalog="system" id="XuR-ED-zRH">
@@ -199,7 +199,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hFY-pS-uj0"/>
+        <segue reference="Nr6-Yc-pbj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
