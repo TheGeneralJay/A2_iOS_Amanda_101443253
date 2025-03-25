@@ -8,42 +8,79 @@
 import UIKit
 import CoreData
 
-class ProductTableViewController: UITableViewController {
-    
+class ProductTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Grab products.
     var products: [Product]?
-
+    var filteringProducts: [Product] = []
+    
+    var searching = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchData(context: context)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return products?.count ?? 0
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath)
-
-        if let products = products {
-            let product = products[indexPath.row]
-            
-            cell.textLabel?.text = "\(product.name ?? "N/A")"
-            cell.detailTextLabel?.text = "Provider: \(product.provider ?? "N/A") \nDescription: \(product.productDescription ?? "N/A") \nPrice: \(product.price.formatted(.currency(code: "CAD")))"
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (searching) {
+            return filteringProducts.count
+        } else {
+            return products?.count ?? 0
         }
-
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell")
+        
+        if (searching) {
+            let filtered = filteringProducts[indexPath.row]
+            
+            cell?.textLabel?.text = filtered.name
+            cell?.detailTextLabel?.text = "Provider: \(filtered.provider ?? "N/A") \nDescription: \(filtered.productDescription ?? "N/A") \nPrice: \(filtered.price.formatted(.currency(code: "CAD")))"
+        } else {
+            if let products = products {
+                let product = products[indexPath.row]
+                
+                cell?.textLabel?.text = "\(product.name ?? "N/A")"
+                cell?.detailTextLabel?.text = "Provider: \(product.provider ?? "N/A") \nDescription: \(product.productDescription ?? "N/A") \nPrice: \(product.price.formatted(.currency(code: "CAD")))"
+            }
+        }
+        
+        return cell!
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let products = products {
+            for product in products {
+                let filter = searchText.lowercased()
+                
+                if let doesContainFilter = product.name?.lowercased().contains(filter) {
+                    if (doesContainFilter) {
+                        filteringProducts.append(product)
+                        searching = true
+                        
+                        print(filteringProducts)
+                        
+                        productTable.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        
+        searchBar.text = ""
+        
+        productTable.reloadData()
     }
 
     func fetchData(context: NSManagedObjectContext) {
@@ -61,50 +98,4 @@ class ProductTableViewController: UITableViewController {
             print("\(error.localizedDescription)")
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
