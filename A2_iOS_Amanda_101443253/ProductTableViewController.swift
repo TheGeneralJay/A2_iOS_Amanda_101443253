@@ -65,11 +65,15 @@ class ProductTableViewController: UIViewController, UITableViewDataSource, UITab
             for product in products {
                 let filter = searchText.lowercased()
                 
-                if let doesContainFilter = product.name?.lowercased().contains(filter) {
+                var doesContainFilter = false
+                
+                doesContainFilter = (product.name?.lowercased().contains(filter) ?? false ||
+                                     product.productDescription?.lowercased().contains(filter) ?? false)
+                
                     if (doesContainFilter) {
                         results.append(product)
                     }
-                }
+                
                 
                 // If search bar is empty, show everything.
                 if (filter == "") {
