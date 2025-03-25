@@ -24,6 +24,8 @@ class ProductTableViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.showsCancelButton = true
+        
         fetchData(context: context)
     }
     
@@ -57,22 +59,28 @@ class ProductTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var results:[Product] = []
+        
         if let products = products {
             for product in products {
                 let filter = searchText.lowercased()
                 
                 if let doesContainFilter = product.name?.lowercased().contains(filter) {
                     if (doesContainFilter) {
-                        filteringProducts.append(product)
-                        searching = true
-                        
-                        print(filteringProducts)
-                        
-                        productTable.reloadData()
+                        results.append(product)
                     }
                 }
+                
+                // If search bar is empty, show everything.
+                if (filter == "") {
+                    results = products
+                }
             }
+            
+            searching = true
+            filteringProducts = results
         }
+        productTable.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
