@@ -24,6 +24,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func addProduct(_ sender: UIBarButtonItem) {
+        // Create alert.
+        let alert = UIAlertController(title: "Success!", message: "Product added successfully.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         // Take user input or fill in default values if left blank.
         let name = textFields[0].text ?? "N/A"
         let productDesc = textFields[1].text ?? "N/A"
@@ -46,6 +50,15 @@ class ViewController: UIViewController {
         
         // Save this to the DB.
         saveToDB(context: context)
+        
+        // Show the alert.
+        self.present(alert, animated: true) {
+            for field in self.textFields {
+                field.text = ""
+            }
+        }
+        
+        
     }
     
     // Passing data to table view.
