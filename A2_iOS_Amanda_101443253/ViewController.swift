@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         fetchData(context: context)
     }
 
-    @IBAction func addProduct(_ sender: UIBarButtonItem) {
+    @IBAction func addProduct(_ sender: UIButton) {
         // Create alert.
         let alert = UIAlertController(title: "Success!", message: "Product added successfully.", preferredStyle: .alert)
         
